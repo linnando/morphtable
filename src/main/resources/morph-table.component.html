@@ -1,0 +1,27 @@
+<div class="table-responsive">
+    <table class="table table-stripped table-hover table-condensed">
+        <tr>
+            <th>Element</th>
+            <th [attr.colspan]="maxOptionNumber + 1">Options</th>
+        </tr>
+        <tr *ngFor="let element of elements; let i = index">
+            <td>
+                <a (click)="removeElement(i)" class="remove-element">X</a>
+                {{element.name}}
+            </td>
+            <td *ngFor="let option of element.options; let j = index">
+                <a (click)="removeOption(i, j)" class="remove-element">X</a>
+                {{option}}
+            </td>
+            <td *ngFor="let j of Arr(maxOptionNumber - element.options.length).fill(1)"></td>
+            <td>
+                <input #newOption placeholder="Option">
+                <a (click)="addOption(i, newOption.value); newOption.value = ''" class="add-element">+</a>
+            </td>
+        </tr>
+    </table>
+    <p>
+        <input #newElement placeholder="Element">
+        <a (click)="addElement(newElement.value); newElement.value=''" class="add-element">+</a>
+    </p>
+</div>
