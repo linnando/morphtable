@@ -24,4 +24,6 @@ lazy val root = project.in(file(".")).
     //resolvers += Resolver.sonatypeRepo("releases")
   )
 
+val stage = taskKey[Unit]("Stage task")
 
+stage := (fullOptJS in Compile).value
