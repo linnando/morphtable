@@ -4,6 +4,9 @@
   "scripts": {
     "start": "lite-server"
   },
+  "engines": {
+    "node": "4.7.2"
+  },
   "dependencies": {
     "@angular/common": "~2.2.0",
     "@angular/compiler": "~2.2.0",
