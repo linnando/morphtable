@@ -1,5 +1,6 @@
 package org.linnando.morphtable
 
+import angulate2.router.Router
 import angulate2.std._
 
 @Component(
@@ -7,5 +8,6 @@ import angulate2.std._
   templateUrl = "src/main/resources/app.component.html",
   styleUrls = @@@("src/main/resources/app.component.css")
 )
-class AppComponent {
+class AppComponent(r: Router) {
+  val router = r
 }

@@ -1,0 +1,22 @@
+<div>
+    <label for="constraint">Constraint:</label>
+    <textarea id="constraint"
+              class="form-control" rows="4"
+              [(ngModel)]="constraintExpression"
+              placeholder="Boolean expression">
+    </textarea>
+</div>
+<div>
+    <button (click)="generate()">Generate combinations</button>
+    <span class="invalid">{{errorMessage}}</span>
+</div>
+<div class="table-responsive">
+    <table class="table table-stripped table-hover table-condensed">
+        <tr>
+            <th *ngFor="let elementName of elementNames">{{elementName}}</th>
+        </tr>
+        <tr *ngFor="let combination of elementOptions">
+            <td *ngFor="let option of combination">{{option}}</td>
+        </tr>
+    </table>
+</div>

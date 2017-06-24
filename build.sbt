@@ -1,7 +1,7 @@
 lazy val commonSettings = Seq(
   organization := "org.linnando",
   version := "0.0.1",
-  scalaVersion := "2.11.8",
+  scalaVersion := "2.12.2",
   scalacOptions ++= Seq("-deprecation","-unchecked","-feature","-Xlint"),
   resolvers += Resolver.sonatypeRepo("snapshots"),
   libraryDependencies ++= Seq(
@@ -17,8 +17,6 @@ lazy val root = project.in(file(".")).
   settings(
     name := "morphtable",
     libraryDependencies ++= Seq(
-      "org.scala-lang.modules" %% "scala-parser-combinators" % "1.0.6",
-      "org.scala-lang.modules" %%% "scala-parser-combinators" % "1.0.6",
       "com.github.karasiq" %%% "scalajs-bootstrap" % "2.0.0",
       "org.specs2" %% "specs2-core" % "3.9.1" % "test"
     ),
