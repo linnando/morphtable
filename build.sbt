@@ -1,4 +1,3 @@
-
 lazy val commonSettings = Seq(
   organization := "org.linnando",
   version := "0.0.1",
@@ -18,9 +17,13 @@ lazy val root = project.in(file(".")).
   settings(
     name := "morphtable",
     libraryDependencies ++= Seq(
-      "com.github.karasiq" %%% "scalajs-bootstrap" % "2.0.0"
+      "org.scala-lang.modules" %% "scala-parser-combinators" % "1.0.6",
+      "org.scala-lang.modules" %%% "scala-parser-combinators" % "1.0.6",
+      "com.github.karasiq" %%% "scalajs-bootstrap" % "2.0.0",
+      "org.specs2" %% "specs2-core" % "3.9.1" % "test"
     ),
-    ngBootstrap := Some("org.linnando.morphtable.AppModule")
+    ngBootstrap := Some("org.linnando.morphtable.AppModule"),
+    scalacOptions in Test ++= Seq("-Yrangepos")
     //resolvers += Resolver.sonatypeRepo("releases")
   )
 

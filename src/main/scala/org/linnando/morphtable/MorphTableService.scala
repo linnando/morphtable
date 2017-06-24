@@ -30,7 +30,7 @@ class MorphTableService {
 
   def removeElement(elementIndex: Int): RxPromise[Unit] = {
     elements.splice(elementIndex, 1)
-    RxPromise.resolve()
+    RxPromise.resolve(Unit)
   }
 
   def addOption(elementIndex: Int, option: String): RxPromise[Element] = {
