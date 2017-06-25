@@ -17,7 +17,18 @@ class MorphTableService {
     Element("Debugger", @@@("Standalone, single thread debugging", "Standalone, multi-thread debugging", "Debug server, single thread debugging", "Debug server, multi-thread debugging")),
     Element("Version control system", @@@("Centralised storage, no event processing", "Centralised storage, event processing", "Distributed storage, no event processing", "Distributed storage, event processing"))
   )
-  var constraint: String = "('Code editor' NOT IN ('Tooling information', 'Tooling, test and debugger') || 'Code analyser' IN ('Standalone, only formal checks', 'Standalone, checks and warnings', 'Standalone, change suggestions')) && !('Code editor' IN ('Test and debugger integration', 'Tooling, test and debugger') && 'Debugger' IN ('Standalone, single thread debugging', 'Standalone, multi-thread debugging')) && (('Compiler' IN ('Machine code, manual implementation', 'Machine code, compiler generator') && 'Runtime environment' = 'Machine code-based') || ('Compiler' IN ('Bytecode, manual implementation', 'Bytecode, compiler generator') && 'Runtime environment' != 'Machine code-based')) && ('Build system' != 'Continuous integration' || ('Test execution system' IN ('Test execution, remote execution', 'Test execution and code coverage, remote execution') && 'Version control system' IN ('Centralised storage, event processing', 'Distributed storage, event processing')))"
+  var constraint: String =
+    """('Code editor' NOT IN ('Tooling information', 'Tooling, test and debugger')
+      |  || 'Code analyser' IN ('Standalone, only formal checks', 'Standalone, checks and warnings', 'Standalone, change suggestions'))
+      |&& !('Code editor' IN ('Test and debugger integration', 'Tooling, test and debugger')
+      |  && 'Debugger' IN ('Standalone, single thread debugging', 'Standalone, multi-thread debugging'))
+      |&& (('Compiler' IN ('Machine code, manual implementation', 'Machine code, compiler generator')
+      |    && 'Runtime environment' = 'Machine code-based')
+      |  || ('Compiler' IN ('Bytecode, manual implementation', 'Bytecode, compiler generator')
+      |    && 'Runtime environment' != 'Machine code-based'))
+      |&& ('Build system' != 'Continuous integration'
+      |  || ('Test execution system' IN ('Test execution, remote execution', 'Test execution and code coverage, remote execution')
+      |    && 'Version control system' IN ('Centralised storage, event processing', 'Distributed storage, event processing')))""".stripMargin
 
   def getElements: RxPromise[js.Array[Element]] = RxPromise.resolve(elements.jsSlice())
 
